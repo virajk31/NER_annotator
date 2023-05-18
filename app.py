@@ -17,13 +17,18 @@ if uploaded_file is not None:
     # Initialize session state
     state = st.session_state
 
+    if 'count' not in st.session_state:
+        st.session_state.count = 0
+        
     col1, col2 = st.columns([1,1])
     # Navigation buttons
     with col1:
         if st.button('Next') and state.current_index < len(state.files) - 1:
+            st.session_state.count += 1
             state.current_index += 1
     with col2:
         if st.button('Previous') and state.current_index > 0:
+            st.session_state.count -= 1
             state.current_index -= 1
 
 
@@ -40,6 +45,8 @@ if uploaded_file is not None:
     annotation = StTextAnnotator(current_file)
 
     st.write(annotation)
+    st.write(f'Count = {st.session_state.count}')
+
 
 
     # # Load annotation if it exists, else create new annotation
@@ -48,7 +55,7 @@ if uploaded_file is not None:
     # else:
     #     annotation = StTextAnnotator(current_file)
 
-    print('annotation',annotation)
+    # print('annotation',annotation)
 
     # Display annotation tool
     state.annotations[current_file] = annotation
@@ -62,7 +69,6 @@ if uploaded_file is not None:
         
             
     # Save annotations to json file
-
     import pickle
     TRAIN_DATA = []
 
@@ -87,4 +93,4 @@ if uploaded_file is not None:
     label="Download pickle file",
     data=pickle.dumps(TRAIN_DATA),
     file_name='trainingData.pkl',
-)
+    )
