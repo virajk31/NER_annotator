@@ -1,0 +1,32 @@
+[
+    [
+        "Isatuximab (for run-in portion)",
+        {
+            "entities": [
+                [
+                    0,
+                    10,
+                    "Isatuximab"
+                ]
+            ]
+        }
+    ],
+    [
+        "Isatuximab (for expansion)",
+        {
+            "entities": []
+        }
+    ],
+    [
+        "BI-754091 plus afatinib",
+        {
+            "entities": [
+                [
+                    0,
+                    9,
+                    "BI-754091"
+                ]
+            ]
+        }
+    ]
+]
