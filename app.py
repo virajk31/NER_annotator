@@ -78,9 +78,13 @@ if uploaded_file is not None:
             TRAIN_DATA.append((text, {"entities": entities}))  # Convert list to tuple
 
     print('TRAIN_DATA',TRAIN_DATA)
-    if st.button('Save annotations'):
-        with open('train_data.pkl', 'wb') as pkl_file:
-            pickle.dump(TRAIN_DATA, pkl_file)
-        st.success("Annotations saved to train_data.pkl")
+    # if st.button('Save annotations'):
+    #     with open('train_data.pkl', 'wb') as pkl_file:
+    #         pickle.dump(TRAIN_DATA, pkl_file)
+    #     st.success("Annotations saved to train_data.pkl")
 
-
+    st.download_button(
+    label="Download pickle file",
+    data=pickle.dumps(TRAIN_DATA),
+    file_name='trainingData.pkl',
+)
